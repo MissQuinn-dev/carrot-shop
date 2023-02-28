@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+%fn=uowdj5&wmxqv@kwg8*hf6opxh4u-#pggl39(qc!i2if86
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['carrotshop.quinndev.com','172.16.10.70','localhost']
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
