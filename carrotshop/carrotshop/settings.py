@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['carrotshop.quinndev.com','172.16.10.70','localhost']
 
+CSRF_TRUSTED_ORIGINS = ['https://*carrotshop.quinndev.com','https://*172.16.10.70']
+
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
