@@ -1,8 +1,11 @@
-version: "3"
-
 services:
   web:
-    build: .
+    # platform: linux/arm64
+    build: 
+      context: .
+      dockerfile: Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - 8000:8000
+    network_mode: "bridge"
+    restart: "always"
