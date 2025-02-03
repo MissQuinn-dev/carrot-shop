@@ -36,3 +36,18 @@ class SignupForm(UserCreationForm):
         'placeholder': 'Repeat password',
         'class': 'w-full py-4 px-6 rounded-xl'
     }))
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={
+        'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500',
+        'placeholder': 'Your Name'
+    }))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500',
+        'placeholder': 'Your Email'
+    }))
+    message = forms.CharField(widget=forms.Textarea(attrs={
+        'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500',
+        'placeholder': 'Your Message',
+        'rows': 5
+    }))

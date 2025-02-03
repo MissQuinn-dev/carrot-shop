@@ -3,3 +3,5 @@ build:
 
 run:
 	docker run -d --rm -p 8050:8000 carrot-shop
+dev:
+	cd carrotshop && python manage.py runserver 0.0.0.0:8000

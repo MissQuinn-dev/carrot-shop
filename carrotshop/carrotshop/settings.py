@@ -9,8 +9,11 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+%fn=uowdj5&wmxqv@kwg8*hf6opxh4u-#pggl39(qc!i2if86'
+SECRET_KEY = os.environ.get("SUPER_SECRET_KEY", "missing_your_secret_key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG_MODE") == "true"
 
-ALLOWED_HOSTS = ['carrotshop.quinndev.com','172.16.10.70','localhost','0.0.0.0']
+ALLOWED_HOSTS = ['carrotshop.quinndev.com','172.16.10.70','localhost','0.0.0.0','127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = ['https://*carrotshop.quinndev.com','https://*172.16.10.70']
 
@@ -132,3 +135,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get("GMAIL_EMAIL_HOST_USER", "missing-gmail-host-user")
+EMAIL_HOST_PASSWORD = os.environ.get("GMAIL_EMAIL_HOST_PASSWORD", "missing-gmail-key-for-host")
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
